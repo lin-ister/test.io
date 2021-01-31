@@ -12,6 +12,7 @@ mixBut.addEventListener("click", Start);
 
 function Start(){
     console.log("Started");
+    startTimer(twentyfiveMinutes, display);
     mixBut.removeEventListener("click", Start);
     mixBut.addEventListener("click", Stop);
     mixBut.value = "Stop";
@@ -42,11 +43,8 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-    console.log("Stopped");
     var twentyfiveMinutes = 60 * 25,
     display = document.querySelector('#time');
-    startTimer(twentyfiveMinutes, display);
-    mixBut.value = "Start";
 };
 </script>
 
