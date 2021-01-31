@@ -4,7 +4,12 @@
   
 <input type="button" id="mixBut" value="Start" />
 <input type="button" id="mixBut" value="Reset" />
+
 <div>Pomodoro Timer: <span id="time">25:00</span> </div>
+
+<input type='text' id='idea' />
+<input type='button' value='add to list' id='add' />
+<ul id='list'></ul>
   
 <script>
 var mixBut = document.getElementById("mixBut");
@@ -47,6 +52,20 @@ window.onload = function () {
     display = document.querySelector('#time');
     startTimer(twentyfiveMinutes, display);
 };
+
+
+//Defining a listener for our button, specifically, an onclick handler
+document.getElementById("add").onclick = function() {
+    //First things first, we need our text:
+    var text = document.getElementById("idea").value; //.value gets input values
+
+    //Now construct a quick list element
+    var li = "<li>" + text + "</li>";
+
+    //Now use appendChild and add it to the list!
+    document.getElementById("list").appendChild(li);
+}
+
 </script>
 
 
