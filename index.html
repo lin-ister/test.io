@@ -7,10 +7,15 @@
 
 <div>Pomodoro Timer: <span id="time">25:00</span> </div>
 
-<input type='text' id='idea' />
-<input type='button' value='add to list' id='add' />
-<ul id='list'></ul>
-  
+<form id="myform" onsubmit="return addUser()">
+    <h2>Add a User:</h2>
+    <input id="username" type="text" name="username" placeholder="name"/>
+    <button type="submit">add user</button>
+</form>
+        
+<h2>UsersList:</h2>
+<ul id="users"></ul>
+
 <script>
 var mixBut = document.getElementById("mixBut");
 
@@ -54,16 +59,15 @@ window.onload = function () {
 };
 
 
-//Defining a listener for our button, specifically, an onclick handler
-document.getElementById("add").onclick = function() {
-    //First things first, we need our text:
-    var text = document.getElementById("idea").value; //.value gets input values
+var list = document.getElementById('users');
 
-    //Now construct a quick list element
-    var li = "<li>" + text + "</li>";
-
-    //Now use appendChild and add it to the list!
-    document.getElementById("list").appendChild(li);
+function addUser(){
+    var username = document.getElementById('username').value;
+    var entry = document.createElement('li');
+    entry.appendChild(document.createTextNode(username));
+    list.appendChild(entry);
+    
+    return false;
 }
 
 </script>
