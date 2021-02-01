@@ -7,15 +7,20 @@
 
 <div>Pomodoro Timer: <span id="time">25:00</span> </div>
 
-<form id="myform" onsubmit="return addTask()">
-    <h2>Add a task:</h2>
-    <input id="task" type="text" name="task" placeholder="New Task"/>
-    <button type="submit">add</button>
-    <button type="reset">clear</button>
-</form>
-        
+<form action="#" method="post">
+      <div>
+        <h2>Add a task:</h2>
+        <input type="text" name="newitem" id="newitem" 
+               placeholder="New Task" />
+        <input type="submit" value="Add" />
+        <input type="reset" value="Clear" />
+      </div>
+      </form>
 <h2>Tasks:</h2>
 <ul id="tasks"></ul>
+
+<h2>Done:</h2>
+<ul id="finished"></ul>
 
 <script>
 var mixBut = document.getElementById("mixBut");
@@ -36,7 +41,7 @@ function Stop(){
     mixBut.removeEventListener("click", Stop);
     mixBut.addEventListener("click", Start);
     mixBut.value = "Start";
-}
+} 
   
 function startTimer(duration, display) {
   var timer = duration, minutes, seconds;
@@ -64,14 +69,28 @@ window.onload = function () {
 
 var list = document.getElementById('tasks');
 
-function addTask(){
-    var task = document.getElementById('task').value;
-    var entry = document.createElement('li');
-    entry.appendChild(document.createTextNode(task));
-    list.appendChild(entry);
-    return false;
-}
+(function(){
 
+  var todo = document.querySelector( '#tasks' ),
+      form = document.querySelector( 'form' ),
+      field = document.querySelector( '#newitem' );
+    
+  form.addEventListener( 'submit', function( ev ) {
+    var text = field.value;
+    if ( text !== '' ) {
+      todo.innerHTML += '<li>' + text +
+        ' <button onclick="Delete(this);">delete</button> </li>';
+      field.value = '';
+    }
+    ev.preventDefault();
+  }, false);
+
+})();
+ 
+function Delete(curr){
+    curr.parentNode.parentNode.removeChild(curr.parentNode);
+    
+}
 
 </script>
 
