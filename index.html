@@ -9,7 +9,7 @@
 
 <form id="myform" onsubmit="return addTask()">
     <h2>Add a task:</h2>
-    <input id="task" type="text" name="task" placeholder="name"/>
+    <input id="task" type="text" name="task" placeholder="New Task"/>
     <button type="submit">add</button>
     <button type="reset">clear</button>
 </form>
@@ -22,14 +22,14 @@ var mixBut = document.getElementById("mixBut");
 
 mixBut.addEventListener("click", Start);
 
-/*
+
 function Start(){
     console.log("Started");
     mixBut.removeEventListener("click", Start);
     mixBut.addEventListener("click", Stop);
     mixBut.value = "Stop";
 }
-*/
+
 
 function Stop(){
     console.log("Stopped");
