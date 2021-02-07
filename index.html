@@ -1,99 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html lang ="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="./assests/styles/title.css">
+</head>
+
 <body>
-  
-<input type="button" id="mixBut" value="Start" />
-<input type="button" id="mixBut" value="Reset" />
-
-<div>Pomodoro Timer: <span id="time">25:00</span> </div>
-
-<form action="#" method="post">
-      <div>
-        <h2>Add a task:</h2>
-        <input type="text" name="newitem" id="newitem" 
-               placeholder="New Task" />
-        <input type="submit" value="Add" />
-        <input type="reset" value="Clear" />
-      </div>
-      </form>
-<h2>Tasks:</h2>
-<ul id="tasks"></ul>
-
-<h2>Done:</h2>
-<ul id="finished"></ul>
-
-<script>
-var mixBut = document.getElementById("mixBut");
-
-mixBut.addEventListener("click", Start);
+<!--
+  <div>
+    <header>
+      <h1>Pomodoro Timer:</h1>
+      <div class ="timer"></div>
+      <span id="time"></span>
+    </header>
+  </div>
+-->
+<h1>
+  <div>Pomodoro Timer: 
+    <span id="minute">00</span> : 
+    <span id="seconds">00</span>
+  </div>
+</h1>
 
 
-function Start(){
-    console.log("Started");
-    mixBut.removeEventListener("click", Start);
-    mixBut.addEventListener("click", Stop);
-    mixBut.value = "Stop";
-}
-
-
-function Stop(){
-    console.log("Stopped");
-    mixBut.removeEventListener("click", Stop);
-    mixBut.addEventListener("click", Start);
-    mixBut.value = "Start";
-} 
-  
-function startTimer(duration, display) {
-  var timer = duration, minutes, seconds;
-  setInterval(function () {
-      minutes = parseInt(timer / 60, 10);
-      seconds = parseInt(timer % 60, 10);
-
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
-      display.textContent = minutes + ":" + seconds;
-
-      if (--timer < 0) {
-          timer = duration;
-      }
-  }, 1000);
-}
-
-window.onload = function () {
-    var twentyfiveMinutes = 60 * 25,
-    display = document.querySelector('#time');
-    startTimer(twentyfiveMinutes, display);
-};
-
-
-var list = document.getElementById('tasks');
-
-(function(){
-
-  var todo = document.querySelector( '#tasks' ),
-      form = document.querySelector( 'form' ),
-      field = document.querySelector( '#newitem' );
-    
-  form.addEventListener( 'submit', function( ev ) {
-    var text = field.value;
-    if ( text !== '' ) {
-      todo.innerHTML += '<li>' + text +
-        ' <button onclick="Delete(this);">delete</button> </li>';
-      field.value = '';
-    }
-    ev.preventDefault();
-  }, false);
-
-})();
+  <input type="button" id="mixBut" value="Start Timer" />
+  <button id="reset-btn">Reset</button>
  
-function Delete(curr){
-    curr.parentNode.parentNode.removeChild(curr.parentNode);
-    
-}
+  <form action="#" method="post">
+    <div>
+      <h2>Add a task:</h2>
+      <input type="text" name="newitem" id="newitem" placeholder="New Task" />
+      <input type="submit" value="Add" />
+      <input type="reset" value="Clear" />
+    </div>
+  </form>
 
-</script>
+  <h2>Tasks:</h2>
+  <ul id="tasks"></ul>
+  <input type="button" id="clearList" value="Clear List" />
+  
+  <!-- Not a necessary function, only finish possible
+  <h2>Done:</h2>
+  <ul id="finished"></ul> 
+  -->
 
+<div>
+<h3>Notification sound:</h3>
+<select id="changeSelect" onchange="sound()">
+  <option value="Google">Google</option>
+  <option value="Mario">Mario</option>
+  <option value="iPhone">iPhone</option>
+</select>
+</div>
+
+<!--
+<input type="button" id="StopSound" value="mute" />
+-->
+
+  <fieldset id="volume-controls">
+    <div id="volume-grid-container">
+      <label for="volume-number" id="volume-text">Volume</label>
+      <input id="volume-number" name="volume-number" type="number" min="0" max="100"
+        value="100">
+      <input id="volume-slider" name="volume-slider" type="range" min="0" max="100"
+        value="100">
+    </div>
+  </fieldset>
+  
+
+<script src = "assets/scripts/clock.js"></script>
 
 </body>
+
 </html>
