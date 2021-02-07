@@ -1,4 +1,4 @@
-var twentyfiveMinutes = 60*25;
+var twentyfiveMinutes = 60 * 25;
 //var twentyfiveMinutes = 2;
 var pomodoro = 1;
 
@@ -37,6 +37,7 @@ window.onload = () => {
         console.log("Started");
         mixBut.removeEventListener("click", Start);
         mixBut.addEventListener("click", Stop);
+        document.getElementById("mixBut").style.background = "indianred";
         mixBut.value = "Stop Timer";
     }
     
@@ -47,6 +48,7 @@ window.onload = () => {
         console.log("Stopped");
         mixBut.removeEventListener("click", Stop);
         mixBut.addEventListener("click", Start);
+        document.getElementById("mixBut").style.background = "lightgreen";
         mixBut.value = "Start Timer";
     }
 
@@ -55,6 +57,14 @@ window.onload = () => {
        document.getElementById("minute").innerHTML = '00';
        document.getElementById("seconds").innerHTML = '00';
     }
+
+    /* a function to set a timer by way of inputtable number
+    function setTimer(){
+        totalSeconds = twentyfiveMinutes;
+        document.getElementById("minute").innerHTML = '00';
+        document.getElementById("seconds").innerHTML = '00';
+     }
+     */
   }
 
 
