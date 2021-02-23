@@ -27,31 +27,31 @@ var pomodoro = 1;
     }
 
     var mixBut = document.getElementById("mixBut");
-    mixBut.addEventListener("click", Start);
+    mixBut.addEventListener("click", startButton);
     var resetTimer = document.getElementById("reset-btn");
-    resetTimer.addEventListener("click", Reset);
+    resetTimer.addEventListener("click", resetButton);
 
-    function Start(){
+    function startButton(){
         intervalId = setInterval(startTimer, 1000);
         console.log("Started");
-        mixBut.removeEventListener("click", Start);
-        mixBut.addEventListener("click", Stop);
+        mixBut.removeEventListener("click", startButton);
+        mixBut.addEventListener("click", stopButton);
         document.getElementById("mixBut").style.background = "indianred";
         mixBut.value = "Stop Timer";
     }
     
-    function Stop(){
+    function stopButton(){
         if (intervalId){
             clearInterval(intervalId);
         }
         console.log("Stopped");
-        mixBut.removeEventListener("click", Stop);
-        mixBut.addEventListener("click", Start);
+        mixBut.removeEventListener("click", stopButton);
+        mixBut.addEventListener("click", startButton);
         document.getElementById("mixBut").style.background = "lightgreen";
         mixBut.value = "Start Timer";
     }
 
-    function Reset(){
+    function resetButton(){
        totalSeconds = twentyfiveMinutes;
        document.getElementById("minute").innerHTML = '00';
        document.getElementById("seconds").innerHTML = '00';
