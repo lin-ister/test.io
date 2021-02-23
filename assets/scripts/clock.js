@@ -1,4 +1,4 @@
-var twentyfiveMinutes = 60 * 25;
+var twentyfiveMinutes = 5;
 //var twentyfiveMinutes = 2;
 var pomodoro = 1;
 
