@@ -1,10 +1,9 @@
-var twentyfiveMinutes = 5;
+var twentyfiveMinutes = 25;
 //var twentyfiveMinutes = 2;
 var pomodoro = 1;
 
 
 //Timer Functions
-window.onload = () => {
     let minute = 0;
     let seconds = 0;
     let totalSeconds = twentyfiveMinutes;
@@ -65,7 +64,6 @@ window.onload = () => {
         document.getElementById("seconds").innerHTML = '00';
      }
      */
-  }
 
 
 
